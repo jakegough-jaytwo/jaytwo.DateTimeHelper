@@ -94,8 +94,8 @@ namespace jaytwo.DateTimeHelper
             return value.ToString("s", CultureInfo.InvariantCulture);
         }
 
-#if NETFRAMEWORK
-        // shims for .NET Framework
+#if NETFRAMEWORK || NETSTANDARD1_1
+        // shims for older .NET
         public static long ToUnixTimeSeconds(this DateTimeOffset value) => UnixTime.ToUnixTimeSeconds(value);
 
         public static long ToUnixTimeMilliseconds(this DateTimeOffset value) => UnixTime.ToUnixTimeMilliseconds(value);

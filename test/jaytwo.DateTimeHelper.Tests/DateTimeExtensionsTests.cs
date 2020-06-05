@@ -286,6 +286,34 @@ namespace jaytwo.DateTimeHelper.Tests
         }
 
         [Fact]
+        public void ToUnixTimeMilliseconds()
+        {
+            // arrange
+            var now = DateTime.UtcNow;
+            var expected = new DateTimeOffset(now).ToUnixTimeMilliseconds();
+
+            // act
+            var actual = now.ToUnixTimeMilliseconds();
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ToUnixTimeSeconds()
+        {
+            // arrange
+            var now = DateTime.UtcNow;
+            var expected = new DateTimeOffset(now).ToUnixTimeSeconds();
+
+            // act
+            var actual = now.ToUnixTimeSeconds();
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
         public void TruncateToMinute()
         {
             // arrange

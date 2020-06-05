@@ -96,13 +96,15 @@ namespace jaytwo.DateTimeHelper
             return value.ToString("s", CultureInfo.InvariantCulture);
         }
 
-#if NETFRAMEWORK
-        // shims for .NET Framework
+        public static long ToUnixTimeSeconds(this DateTime value)
+        {
+            return UnixTime.ToUnixTimeSeconds(value);
+        }
 
-        public static long ToUnixTimeSeconds(this DateTime value) => UnixTime.ToUnixTimeSeconds(value);
-
-        public static long ToUnixTimeMilliseconds(this DateTime value) => UnixTime.ToUnixTimeMilliseconds(value);
-#endif
+        public static long ToUnixTimeMilliseconds(this DateTime value)
+        {
+            return UnixTime.ToUnixTimeMilliseconds(value);
+        }
 
         public static DateTime TruncateToMinute(this DateTime value)
         {
