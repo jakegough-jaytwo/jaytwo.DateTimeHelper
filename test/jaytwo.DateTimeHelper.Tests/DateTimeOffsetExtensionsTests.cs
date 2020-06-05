@@ -217,25 +217,39 @@ namespace jaytwo.DateTimeHelper.Tests
         }
 
         [Fact]
-        public void ToIso8601String_Utc()
+        public void ToIso8601String_Zero_Offset()
         {
             // arrange
-            var date = new DateTimeOffset(new DateTime(2015, 1, 25, 1, 12, 25, 123, DateTimeKind.Utc));
+            var date = new DateTimeOffset(2015, 1, 25, 1, 12, 25, 123, TimeSpan.Zero);
+            var expected = $"2015-01-25T01:12:25.1230000{(date.Offset >= TimeSpan.Zero ? "+" : string.Empty)}{date.Offset.Hours:00}:{date.Offset.Minutes:00}";
 
             // act
             var actual = date.ToIso8601String();
 
             //assert
-            Assert.Equal("2015-01-25T01:12:25.1230000Z", actual);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void ToIso8601String_Local()
+        public void ToIso8601String_Positive_Offset()
         {
             // arrange
-            var date = new DateTimeOffset(new DateTime(2015, 1, 25, 1, 12, 25, 123, DateTimeKind.Local));
-            var localOffset = TimeZoneInfo.Local.GetUtcOffset(date);
-            var expected = $"2015-01-25T01:12:25.1230000{(localOffset > TimeSpan.Zero ? "+" : string.Empty)}{localOffset.Hours:00}:{localOffset.Minutes:00}";
+            var date = new DateTimeOffset(2015, 1, 25, 1, 12, 25, 123, TimeSpan.FromHours(5));
+            var expected = $"2015-01-25T01:12:25.1230000{(date.Offset >= TimeSpan.Zero ? "+" : string.Empty)}{date.Offset.Hours:00}:{date.Offset.Minutes:00}";
+
+            // act
+            var actual = date.ToIso8601String();
+
+            //assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ToIso8601String_Negative_Offset()
+        {
+            // arrange
+            var date = new DateTimeOffset(2015, 1, 25, 1, 12, 25, 123, TimeSpan.FromHours(-5));
+            var expected = $"2015-01-25T01:12:25.1230000{(date.Offset >= TimeSpan.Zero ? "+" : string.Empty)}{date.Offset.Hours:00}:{date.Offset.Minutes:00}";
 
             // act
             var actual = date.ToIso8601String();

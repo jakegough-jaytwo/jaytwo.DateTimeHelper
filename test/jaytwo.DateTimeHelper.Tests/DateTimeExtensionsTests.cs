@@ -235,7 +235,7 @@ namespace jaytwo.DateTimeHelper.Tests
             // arrange
             var date = new DateTime(2015, 1, 25, 1, 12, 25, 123, DateTimeKind.Local);
             var localOffset = TimeZoneInfo.Local.GetUtcOffset(date);
-            var expected = $"2015-01-25T01:12:25.1230000{(localOffset > TimeSpan.Zero ? "+" : string.Empty)}{localOffset.Hours:00}:{localOffset.Minutes:00}";
+            var expected = $"2015-01-25T01:12:25.1230000{(localOffset >= TimeSpan.Zero ? "+" : string.Empty)}{localOffset.Hours:00}:{localOffset.Minutes:00}";
 
             // act
             var actual = date.ToIso8601String();

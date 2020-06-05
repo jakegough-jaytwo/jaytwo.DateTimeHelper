@@ -81,14 +81,7 @@ namespace jaytwo.DateTimeHelper
             // "o" is the Round-trip Format Specifier
             //  "takes advantage of the three ways that ISO 8601 represents time zone information to preserve the Kind property of DateTime values"
 
-            if (value.Offset == TimeSpan.Zero)
-            {
-                return value.UtcDateTime.ToIso8601String();
-            }
-            else
-            {
-                return value.ToString("o", CultureInfo.InvariantCulture);
-            }
+            return value.ToString("o", CultureInfo.InvariantCulture);
         }
 
         public static long ToLdapTime(this DateTimeOffset value)
