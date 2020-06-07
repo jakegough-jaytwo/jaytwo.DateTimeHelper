@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace jaytwo.DateTimeHelper
 {
-    public class LdapTime
+    public static class LdapTime
     {
         // the number of 100-nanosecond intervals that have elapsed since the 0 hour on January 1, 1601
         // 100 nanoseconds = 0.0001 milliseconds
