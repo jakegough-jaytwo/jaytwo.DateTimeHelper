@@ -6,6 +6,117 @@ namespace jaytwo.DateTimeHelper.Tests
 {
     public class DateTimeOffsetExtensionsTests
     {
+        [Fact]
+        public void SubtractDays()
+        {
+            // arrange
+            var date = new DateTimeOffset(new DateTime(2020, 6, 9));
+            var expected = new DateTimeOffset(new DateTime(2020, 6, 8));
+
+            // act
+            var actual = date.SubtractDays(1);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SubtractHours()
+        {
+            // arrange
+            var date = new DateTimeOffset(new DateTime(2020, 6, 9));
+            var expected = new DateTimeOffset(new DateTime(2020, 6, 8, 23, 0, 0));
+
+            // act
+            var actual = date.SubtractHours(1);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SubtractMilliseconds()
+        {
+            // arrange
+            var date = new DateTimeOffset(new DateTime(2020, 6, 9));
+            var expected = new DateTimeOffset(new DateTime(2020, 6, 8, 23, 59, 59, 999));
+
+            // act
+            var actual = date.SubtractMilliseconds(1);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SubtractMinutes()
+        {
+            // arrange
+            var date = new DateTimeOffset(new DateTime(2020, 6, 9));
+            var expected = new DateTimeOffset(new DateTime(2020, 6, 8, 23, 59, 0));
+
+            // act
+            var actual = date.SubtractMinutes(1);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SubtractMonths()
+        {
+            // arrange
+            var date = new DateTimeOffset(new DateTime(2020, 6, 9));
+            var expected = new DateTimeOffset(new DateTime(2020, 5, 9));
+
+            // act
+            var actual = date.SubtractMonths(1);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SubtractSeconds()
+        {
+            // arrange
+            var date = new DateTimeOffset(new DateTime(2020, 6, 9));
+            var expected = new DateTimeOffset(new DateTime(2020, 6, 8, 23, 59, 59));
+
+            // act
+            var actual = date.SubtractSeconds(1);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SubtractTicks()
+        {
+            // arrange
+            var date = new DateTimeOffset(new DateTime(2020, 6, 9));
+
+            // act
+            var actual = date.SubtractTicks(1);
+
+            // assert
+            Assert.Equal(date.Ticks - 1, actual.Ticks);
+        }
+
+        [Fact]
+        public void SubtractWeekdays()
+        {
+            // arrange
+            var date = new DateTimeOffset(new DateTime(2020, 6, 9));
+            var expected = new DateTimeOffset(new DateTime(2020, 6, 2));
+
+            // act
+            var actual = date.SubtractWeekdays(5);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
         [Theory]
         [InlineData("2020-05-15", 0, "2020-05-15")] // friday
         [InlineData("2020-05-15", 1, "2020-05-18")]

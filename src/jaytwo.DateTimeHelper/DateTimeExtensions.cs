@@ -28,6 +28,22 @@ namespace jaytwo.DateTimeHelper
             return result;
         }
 
+        public static DateTime SubtractDays(this DateTime dateTime, double value) => dateTime.AddDays(-value);
+
+        public static DateTime SubtractHours(this DateTime dateTime, double value) => dateTime.AddHours(-value);
+
+        public static DateTime SubtractMilliseconds(this DateTime dateTime, double value) => dateTime.AddMilliseconds(-value);
+
+        public static DateTime SubtractMinutes(this DateTime dateTime, double value) => dateTime.AddMinutes(-value);
+
+        public static DateTime SubtractMonths(this DateTime dateTime, int value) => dateTime.AddMonths(-value);
+
+        public static DateTime SubtractSeconds(this DateTime dateTime, double value) => dateTime.AddSeconds(-value);
+
+        public static DateTime SubtractTicks(this DateTime dateTime, long value) => dateTime.AddTicks(-value);
+
+        public static DateTime SubtractWeekdays(this DateTime dateTime, int value) => dateTime.AddWeekdays(-value);
+
         public static DateTime AsLocal(this DateTime value)
         {
             return DateTime.SpecifyKind(value, DateTimeKind.Local);

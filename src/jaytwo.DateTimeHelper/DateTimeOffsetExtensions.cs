@@ -26,6 +26,22 @@ namespace jaytwo.DateTimeHelper
             return result;
         }
 
+        public static DateTimeOffset SubtractDays(this DateTimeOffset dateTime, double value) => dateTime.AddDays(-value);
+
+        public static DateTimeOffset SubtractHours(this DateTimeOffset dateTime, double value) => dateTime.AddHours(-value);
+
+        public static DateTimeOffset SubtractMilliseconds(this DateTimeOffset dateTime, double value) => dateTime.AddMilliseconds(-value);
+
+        public static DateTimeOffset SubtractMinutes(this DateTimeOffset dateTime, double value) => dateTime.AddMinutes(-value);
+
+        public static DateTimeOffset SubtractMonths(this DateTimeOffset dateTime, int value) => dateTime.AddMonths(-value);
+
+        public static DateTimeOffset SubtractSeconds(this DateTimeOffset dateTime, double value) => dateTime.AddSeconds(-value);
+
+        public static DateTimeOffset SubtractTicks(this DateTimeOffset dateTime, long value) => dateTime.AddTicks(-value);
+
+        public static DateTimeOffset SubtractWeekdays(this DateTimeOffset dateTime, int value) => dateTime.AddWeekdays(-value);
+
         public static DateTimeOffset AsLocal(this DateTimeOffset value)
         {
             return new DateTimeOffset(value.DateTime.AsLocal());
